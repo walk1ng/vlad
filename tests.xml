@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config>
+	<tests>
+		<test name="check-hostname">
+			<testcmd>hostname</testcmd>
+			<owner>liwei</owner>
+		</test>
+		<test name="check-ip">
+			<testcmd>ifconfig</testcmd>
+			<owner>vlad</owner>
+		</test>
+		<test name="check-date">
+			<testcmd>date</testcmd>
+			<owner>vlad</owner>
+		</test>
+		<test name="run-py">
+			<testcmd>python mytest.py</testcmd>
+			<owner>liwei</owner>
+		</test>
+	</tests>
+	
+	<cycles>
+		<cycle name="BVT">
+			<test>
+				<name>check-hostname</name>
+			</test>
+			<test>
+				<name>check-ip</name>
+			</test>
+			<test>
+				<name>check-date</name>
+			</test>
+		</cycle>
+		<cycle name="Advanced">
+			<test>
+				<name>run-py</name>
+			</test>
+		</cycle>
+	</cycles>
+</config>
