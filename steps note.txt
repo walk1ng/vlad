@@ -1,0 +1,19 @@
+automation test using jenkins + docker
+
+install jenkins
+wget -q -O - https://jenkins-ci.org/debian/jenkins-ci.org.key | sudo apt-key add -
+sudo sh -c 'echo deb http://pkg.jenkins-ci.org/debian binary/ > /etc/apt/sources.list.d/jenkins.list'
+sudo apt-get update
+sudo apt-get install jenkins
+
+install docker.io
+uname -r #ensure the kernel version great than 3.10
+sudo apt-get update
+sudo apt-get install -y docker.io
+sed -i '$acomplete -F _docker docker' /etc/bash_completion.d/docker.io
+update-rc.d docker.io defaults #configure docker to start when server boot.
+#open a tcp port for communication between jenkins and docker evenif they run on same host
+# /etc/default/docker.io file, setting this parameter
+DOCKER_OPTS=”-H tcp://0.0.0.0:4243 -H unix:///var/run/docker.sock”
+more details can reference this article -> http://varmenise.tumblr.com/post/87976165063/docker-on-centos-jenkins
+and another thought for this goal -> http://www.slideshare.net/shr3kst3r/testing-ansible-with-jenkins-and-docker
