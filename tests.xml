@@ -21,20 +21,13 @@
 	
 	<cycles>
 		<cycle name="BVT">
-			<test>
-				<name>check-hostname</name>
-			</test>
-			<test>
-				<name>check-ip</name>
-			</test>
-			<test>
-				<name>check-date</name>
-			</test>
+			<test>check-hostname</test>
+			<test>check-ip</test>
+			<test>check-date</test>
 		</cycle>
+
 		<cycle name="Advanced">
-			<test>
-				<name>run-py</name>
-			</test>
+			<test>run-py</test>
 		</cycle>
 	</cycles>
 </config>
