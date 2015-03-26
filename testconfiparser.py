@@ -37,6 +37,7 @@ def GenerateTestPropertiesFile():
 	configstring = "enableField=enabled\ngroupBy=testgroup\nfieldSeparator=.\nshowFields=testcase\nmultiplicityField=multiplicity"
 	out = Parse(testConfigXmlName)
 	out = out.__str__().replace("'true'","true")
+	out = 'tests=' + out
 	out = out + '\n' + configstring
 	with open('tests.properties','w') as ff:
 		ff.write(out)
