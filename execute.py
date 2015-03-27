@@ -7,7 +7,7 @@ try:
 except ImportError, e:
 	import xml.etree.ElementTree as ET
 
-tests = os.environ("alltests")
+tests = os.environ["alltests"]
 testConfigXmlName = "tests.xml"
 
 # retrieve test case
@@ -19,7 +19,7 @@ def RetrieveCase():
 		casename = j.get('testcase','')
 		tree = ET.parse(testConfigXmlName)
 		casecmd = (tree.find('tests/test[@name=' + '"' + casename +'"' + ']'))[0].text
-		case = {'casename' : casename, 'casecmd' : casecmd}
+		case = {'name' : casename, 'cmd' : casecmd}
 		cases_need_run.append(case)
 	return cases_need_run
 
@@ -40,11 +40,11 @@ def Run(case):
 	print "*" * 30
 	print
  
- def ExecuteTest():
+def ExecuteTest():
  	cases_need_run = RetrieveCase()
  	print "Below tests will be run:"
  	for c in cases_need_run:
- 		print c['casename']
+ 		print c['name']
  	print
  	for c in cases_need_run:
  		Run(c)
