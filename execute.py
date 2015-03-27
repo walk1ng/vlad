@@ -2,6 +2,7 @@
 import os
 import re
 import json
+import subprocess
 try:
 	import xml.etree.cElementTree as ET
 except ImportError, e:
@@ -30,7 +31,9 @@ def Run(case):
 	print "*" * 30
 	print "TEST START: %s" % casename
 	print "EXECUTE COMMAND: %s" % casecmd
-	rtn = os.system(casecmd)
+	#rtn = os.system(casecmd)
+	p = subprocess.Popen(casecmd,shell=True)
+	rtn = p.returncode
 	result=""
 	if rtn != 0:
 		result = "FAILED"
